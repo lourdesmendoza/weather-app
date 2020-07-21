@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const Form = () => {
 
@@ -16,7 +16,7 @@ const Form = () => {
         //Updated state
         setSearch({
             ...search,
-            [e.target.name]: e.target.name
+            [e.target.name]: e.target.value
         })
     }
 
