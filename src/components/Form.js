@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 
-const Form = () => {
-
-    //Form state
-    const [search, setSearch] = useState({
-        city: '',
-        country:''
-    });
- 
+const Form = ({ search, setSearch, setQuery }) => {
     const [error, setError] = useState(false);
 
     //Get city and country
@@ -31,6 +24,7 @@ const Form = () => {
             return;
         };
         setError(false);
+        setQuery(true);
     }
 
 
@@ -38,7 +32,7 @@ const Form = () => {
         <form 
             onSubmit={handleSubmit}
         >
-            {error ? <p className="red darken-4 error">All fields are required</p> : null }
+            { error ? <p className="red darken-4 error">All fields are required</p> : null }
             <div className="input-field col s12">
                 <input 
                     type="text"
