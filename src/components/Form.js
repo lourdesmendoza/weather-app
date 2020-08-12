@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const Form = ({ search, setSearch, setQuery }) => {
+    
     const [error, setError] = useState(false);
 
     //Get city and country

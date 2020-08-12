@@ -8,13 +8,19 @@ function App() {
 		city: '',
 		country: ''
 	});
-	const [query, setQuery] = useState();
+	const [query, setQuery] = useState(false);
 
 	const { city, country } = search;
 
 	useEffect(() => {
-		console.log(city)
-	}, [city, query])
+		const consultAPI = async() => {
+			http://api.openweathermap.org/data/2.5/weather/?q=Buenos Aires,ar&appid=22023b95ed024d92b893d10f0317ce73&units=metric
+
+
+		};
+
+		consultAPI();
+	}, [query])
 
 
 	return (
