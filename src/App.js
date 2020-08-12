@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Weather from './components/Weather';
+import Error from './components/Error';
 
 function App() {
 	//Form state
@@ -11,6 +12,7 @@ function App() {
 	});
 	const [query, setQuery] = useState(false);
 	const [result, setResult] = useState({});
+	const [error, setError] = useState(false);
 
 	const { city, country } = search;
 
@@ -26,12 +28,24 @@ function App() {
 	
 				setResult(result);
 				setResult(false);
+			
+				if (result.cod === "404") {
+					setError(true);
+				} else 
+					setError(false);
 			}
 
 		};
-
 		consultAPI();
-	}, [city, country, query])
+	}, [city, country, query]);
+
+	let component;
+
+	if (error) {
+		component = <Error message="No result" />
+	} else {
+		component = <Weather result={result} />
+	}
 
 
 	return (
@@ -52,9 +66,7 @@ function App() {
 						</div>
 
 						<div className="col m6  s12">
-							<Weather
-								result={result}
-							/>
+							{component}
 						</div>
 					</div>
 
