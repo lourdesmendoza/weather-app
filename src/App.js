@@ -14,13 +14,21 @@ function App() {
 
 	useEffect(() => {
 		const consultAPI = async() => {
-			http://api.openweathermap.org/data/2.5/weather/?q=Buenos Aires,ar&appid=22023b95ed024d92b893d10f0317ce73&units=metric
-
+			
+			if(query) {
+				const appId = '22023b95ed024d92b893d10f0317ce73';
+				const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
+	
+				const request = await fetch(url);
+				const result = await request.json();
+	
+				console.log(result);
+			}
 
 		};
 
 		consultAPI();
-	}, [query])
+	}, [city, country, query])
 
 
 	return (
